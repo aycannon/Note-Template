@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\input{preamble}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{AE Notes}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE \bf Template}\\
+{\large Archie Cannon}\\
+\today
+\end{center}
+% use \begin{shaded} and \begin{note}
+\setcounter{tocdepth}{2}
+{
+\begin{tcolorbox}[title=Contents, fonttitle=\huge\sffamily\bfseries\selectfont,interior style={left color=codegray,right color=contcol2!40!white},frame style={left color=codegray,right color=contcol2!80!white},coltitle=black,top=2mm,bottom=2mm,left=2mm,right=2mm,drop fuzzy shadow,enhanced,breakable]
+\makeatletter
+\@starttoc{toc}
+\makeatother
+\end{tcolorbox}}
+
+\newpage
+
+\section{Features}
+\subsection{Boxes}
+\subsubsection{tcolorbox}
+
+\begin{tcolorbox}
+This is a normal tcolorbox environment, meaning you must use the begin and end commands. 
+    
+\end{tcolorbox}
+
+\subsubsubsection{Other tcolorbox environments}
+
+\begin{example}
+Each of these environments can be edited to have different names, colours, shading etc.
+\end{example}
+\begin{note}
+As you can see we have made an additional subsubsubsection. \textbf{This section will not appear in your contents library or in the File Outline.}
+\end{note}
+\begin{definition}
+\end{definition}
+\begin{procedure}
+\end{procedure}
+\begin{proof}
+\end{proof}
+
+\paragraph{Paragraphs will show up in your File Outline} 
+
+\subsubsection{Shaded}
+\begin{shaded}
+    There is also the shaded environment. \begin{note}
+        Like the others we can nest environments in it and we can change the colour.
+    \end{note}
+\end{shaded}
+
+\subsubsection{mdframed}
+\begin{mdframed}
+    This is just a normal box, nothing too special about it.
+\end{mdframed}
+
+\subsection{Code}
+\subsubsection*{STATA}
+Taking inspiration from \hyperlink{https://github.com/satejsoman/stata-lstlisting}{satejsoman} I have used their keywords and some more that I have picked up along the way.
+
+\begin{lstlisting}[language = Stata, numbers = none, caption = Example of STATA with lstlisting]
+
+eststo clear
+eststo: reg ltotacc spdlaw beltlaw unem t i.month
+
+qui reg ltotacc t i.month // detrending and deseasonalising
+predict ltotacc_dtds, resid
+
+eststo: reg ltotacc_dtds spdlaw beltlaw unem t i.month
+
+esttab using table1.tex, replace b(%15.3fc) se(%15.3fc) staraux star(* 0.10 ** 0.05 *** 0.01) r2 booktabs  label
+\end{lstlisting}
+
+\begin{note}
+    I have actually set the default lstlisting to be STATA without numbers.
+\end{note}
+
+\subsection{Misc.}
+\subsubsection{Highlighting}
+With the soul package \hl{we can highlight things} and we can also change the colour of the highlighter in the preamble.
+
+
+\end{document}
