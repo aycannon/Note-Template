@@ -11,3 +11,5 @@ For those who do not know how to compile TeX files:
 
 if there are issues caused by having two files, you can copy and paste all the contents of the preamble into the main tex file (before the begin document command) and remove the input{preamble} command.
 
+The bulk of the STATA formatting is from https://github.com/satejsoman/stata-lstlisting
+
